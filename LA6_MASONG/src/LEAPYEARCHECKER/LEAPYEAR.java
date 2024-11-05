@@ -48,6 +48,7 @@ public class LEAPYEAR extends JFrame{
         app.setSize(300,200);
         app.setTitle("Leap Year Checker");
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        app.setResizable(false);
         app.setLocationRelativeTo(null);
         app.setVisible(true);
 

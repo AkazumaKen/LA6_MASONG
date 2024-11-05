@@ -3,6 +3,7 @@ package CALCULATOR;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Calculator extends JFrame{
     private JPanel pCalc;
@@ -19,25 +20,30 @@ public class Calculator extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-             if("+" == cbOpe.getSelectedItem()){
-                 int Total = Integer.parseInt(tfOne.getText() + tfTwo.getText());
+                if("+" == cbOpe.getSelectedItem()){
+                 int Total = Integer.parseInt(tfOne.getText()) + Integer.parseInt(tfTwo.getText());
                  tfRes.setText(String.valueOf(Total));
-             }
-
-                if("/" == cbOpe.getSelectedItem()){
-                    int Total = Integer.parseInt(tfOne.getText() / tfTwo.getText());
-                    tfRes.setText(String.valueOf(Total));
                 }
 
                 if("-" == cbOpe.getSelectedItem()){
-                    int Total = Integer.parseInt(tfOne.getText() - tfTwo.getText());
+                    int Total = Integer.parseInt(tfOne.getText()) - Integer.parseInt(tfTwo.getText());
                     tfRes.setText(String.valueOf(Total));
                 }
 
                 if("*" == cbOpe.getSelectedItem()){
-                    int Total = Integer.parseInt(tfTwo.getText() * tfOne.getText());
+                    int Total = Integer.parseInt(tfOne.getText()) * Integer.parseInt(tfTwo.getText());
                     tfRes.setText(String.valueOf(Total));
                 }
+                try{
+                if("/" == cbOpe.getSelectedItem()){
+                    int Total = Integer.parseInt(tfOne.getText()) / Integer.parseInt(tfTwo.getText());
+                    tfRes.setText(String.valueOf(Total));
+
+                }
+                }catch (ArithmeticException i){
+                    JOptionPane.showMessageDialog(null,"HALA DLI PWEDI ANG n e divide sa 0!");
+                }
+
 
 
             }
@@ -52,7 +58,9 @@ public class Calculator extends JFrame{
         app.setContentPane(app.pCalc);
         app.setSize(600,200);
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        app.setTitle("CALCULATOR");
+        app.setTitle("Simple Calculator");
+
+        app.setResizable(false);
         app.setLocationRelativeTo(null);
         app.setVisible(true);
     }
